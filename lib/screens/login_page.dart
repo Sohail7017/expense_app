@@ -1,3 +1,4 @@
+import 'package:expense_app/data/local_database/db_helper.dart';
 import 'package:expense_app/screens/expense_home_page.dart';
 import 'package:expense_app/screens/sign_up_page.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +16,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(colors: [Colors.white,Colors.purple.shade100,Colors.purple.shade100],
@@ -161,15 +163,26 @@ class _LoginPageState extends State<LoginPage> {
                     height: 20,
                   ),
 
-              ElevatedButton(onPressed: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => ExpenseHomePage()));
+              ElevatedButton(onPressed: () async{
+                var db = DbHelper.getInstance;
+
+                var check = await db.loginUser(mailController.text.toString(), passController.text.toString());
+                 if(check){
+                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ExpenseHomePage()));
+                 }else{
+                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Invalid Username / password',style: TextStyle(color: Colors.white,fontSize: 16),),backgroundColor: Color(0xffE78BBC).withOpacity(0.7),
+                   ));
+                 }
+               /*  mailController.clear();
+                 passController.clear();*/
+
               }, child: SizedBox(
 
                 height: 50,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text('Sign in',style: TextStyle(fontSize: 18,color: Colors.black,fontWeight: FontWeight.bold),),
+                    Text('Sign in',style: TextStyle(fontSize: 18,color: Colors.white,fontWeight: FontWeight.bold),),
                   ],
                 ),
               ),

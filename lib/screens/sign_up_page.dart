@@ -1,3 +1,6 @@
+import 'package:expense_app/data/local_database/db_helper.dart';
+import 'package:expense_app/data/models/user_model.dart';
+import 'package:expense_app/screens/login_page.dart';
 import 'package:flutter/material.dart';
 
 class SignUpPage extends StatelessWidget{
@@ -8,6 +11,7 @@ class SignUpPage extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
         decoration: BoxDecoration(
             gradient: LinearGradient(colors: [Colors.white,Colors.purple.shade100,Colors.purple.shade100],
@@ -167,8 +171,29 @@ class SignUpPage extends StatelessWidget{
               Container(
                   height: 55,
                   width: double.infinity,
-                  child: ElevatedButton(onPressed: (){
-                    Navigator.pop(context);
+                  child: ElevatedButton(onPressed: () async{
+                    var db = DbHelper.getInstance;
+                    var check = await db.addUser(UserModel(
+                        id: 0,
+                        fName: firstController.text.toString(),
+                        lName: lastController.text.toString(),
+                        email: mailController.text.toString(),
+                        pass: passController.text.toString()));
+                  if(check){
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginPage()));
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('User registered successfully!!', style: TextStyle(color: Colors.white,fontSize: 16)), backgroundColor: Color(0xffE78BBC).withOpacity(0.7),));
+                  }else{
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Email already registered!!',style: TextStyle(color: Colors.white,fontSize: 16)),backgroundColor: Color(0xffE78BBC).withOpacity(0.7),
+                        action: SnackBarAction( onPressed: (){
+                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginPage()));
+                        },
+                        label: 'Sign in',
+                        ),
+
+                        ));
+                  }
+
+
                   }, child: Text('Sign Up',style: TextStyle(fontSize: 20,color: Colors.black,fontWeight: FontWeight.bold),),style: ElevatedButton.styleFrom(backgroundColor: Color(0xffE78BBC)),)),
 
               Center(child: TextButton(onPressed: (){
