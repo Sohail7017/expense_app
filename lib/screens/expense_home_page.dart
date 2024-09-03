@@ -1,4 +1,5 @@
 
+import 'package:expense_app/screens/add_expense.dart';
 import 'package:expense_app/screens/expense_statistic.dart';
 import 'package:flutter/material.dart';
 
@@ -289,14 +290,19 @@ class _ExpenseHomePageState extends State<ExpenseHomePage> {
             },
             child: Icon(Icons.bar_chart,size: 30,)),
             label: 'Statistic'),
-        BottomNavigationBarItem(icon: Container(
-            width: 70,
-            height: 50,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
-              color: Color(0xffE78BBC)
-            ),
-            child: Icon(Icons.add,size: 30,color: Colors.white,)),
+        BottomNavigationBarItem(icon: InkWell(
+          onTap: (){
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => AddExpense()));
+          },
+          child: Container(
+              width: 70,
+              height: 50,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                color: Color(0xffE78BBC)
+              ),
+              child: Icon(Icons.add,size: 30,color: Colors.white,)),
+        ),
           label: 'Add'
         ),
         BottomNavigationBarItem(icon: Icon(Icons.notifications,size: 30,),

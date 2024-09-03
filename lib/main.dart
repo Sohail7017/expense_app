@@ -1,5 +1,6 @@
 
 
+import 'package:expense_app/screens/add_expense.dart';
 import 'package:expense_app/screens/expense_home_page.dart';
 import 'package:expense_app/screens/expense_statistic.dart';
 import 'package:expense_app/screens/login_page.dart';
@@ -15,7 +16,7 @@ class ExpenseApp extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: TutorialPage(),
+      home: AddExpense(),
       debugShowCheckedModeBanner: false,
     );
   }
