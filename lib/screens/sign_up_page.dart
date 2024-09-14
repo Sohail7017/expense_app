@@ -2,12 +2,25 @@ import 'package:expense_app/data/local_database/db_helper.dart';
 import 'package:expense_app/data/models/user_model.dart';
 import 'package:expense_app/screens/login_page.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class SignUpPage extends StatelessWidget{
+class SignUpPage extends StatefulWidget{
+  @override
+  State<SignUpPage> createState() => _SignUpPageState();
+}
+
+class _SignUpPageState extends State<SignUpPage> {
+  bool obscureText = true;
+  SharedPreferences? prefers;
+
   TextEditingController firstController = TextEditingController();
+
   TextEditingController lastController = TextEditingController();
+
   TextEditingController mailController = TextEditingController();
+
   TextEditingController passController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -121,6 +134,12 @@ class SignUpPage extends StatelessWidget{
               Container(
                 height: 55,
                 child: TextField(
+                  onTap: (){
+                    obscureText = false;
+                    setState(() {
+
+                    });
+                  },
                   controller: passController,
                   obscureText: true,
                   obscuringCharacter: '*',
@@ -128,7 +147,7 @@ class SignUpPage extends StatelessWidget{
                     prefixIcon: Icon(Icons.password,size: 25,color: Colors.black38,),
                     label: Text('Password'),
                     labelStyle: TextStyle(fontSize: 15,color: Colors.black38,fontWeight: FontWeight.w600),
-                    suffixIcon: Icon(Icons.visibility,size: 20,color: Colors.black45,),
+                    suffixIcon: obscureText == true ? Icon(Icons.visibility,size: 20,color: Colors.black45,) : Icon(Icons.visibility_off,size: 20,color: Colors.black45,),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(width: 2,color: Colors.black54),
                       borderRadius: BorderRadius.circular(10),
@@ -174,7 +193,6 @@ class SignUpPage extends StatelessWidget{
                   child: ElevatedButton(onPressed: () async{
                     var db = DbHelper.getInstance;
                     var check = await db.addUser(UserModel(
-                        id: 0,
                         fName: firstController.text.toString(),
                         lName: lastController.text.toString(),
                         email: mailController.text.toString(),
@@ -197,7 +215,7 @@ class SignUpPage extends StatelessWidget{
                   }, child: Text('Sign Up',style: TextStyle(fontSize: 20,color: Colors.black,fontWeight: FontWeight.bold),),style: ElevatedButton.styleFrom(backgroundColor: Color(0xffE78BBC)),)),
 
               Center(child: TextButton(onPressed: (){
-                Navigator.pop(context);
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginPage()));
               }, child: Text('Already have an account',style: TextStyle(fontSize: 18,color: Colors.black87,fontWeight: FontWeight.bold),)))
 
 

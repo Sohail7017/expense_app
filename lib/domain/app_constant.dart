@@ -1,5 +1,9 @@
 class AppConstant{
 
+  static String image_name = 'Name';
+  static String image_id = 'Id';
+  static String image_path = 'Image';
+
   static final List<Map<String,dynamic>> category = [
     {
       'Name' : 'Shopping',

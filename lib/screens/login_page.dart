@@ -2,6 +2,7 @@ import 'package:expense_app/data/local_database/db_helper.dart';
 import 'package:expense_app/screens/expense_home_page.dart';
 import 'package:expense_app/screens/sign_up_page.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends  StatefulWidget{
   @override
@@ -10,9 +11,10 @@ class LoginPage extends  StatefulWidget{
 
 class _LoginPageState extends State<LoginPage> {
   TextEditingController mailController = TextEditingController();
-
   TextEditingController passController = TextEditingController();
   bool? isCheck = false;
+  SharedPreferences? prefers;
+  bool obscureText = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -117,15 +119,20 @@ class _LoginPageState extends State<LoginPage> {
                 height: 15,
               ),
               TextField(
+                onTap: (){
+                  obscureText = false;
+                  setState(() {
+
+                  });
+                },
                 controller: passController,
                 keyboardType: TextInputType.number,
                 obscureText: true,
                 obscuringCharacter: '*',
                 decoration:  InputDecoration(
-
                   label: Text('Enter your password..'),
                     helperStyle: TextStyle(fontSize: 15,color: Colors.black87),
-                    suffixIcon: Icon(Icons.visibility,size: 20,),
+                    suffixIcon: obscureText == true ? Icon(Icons.visibility,size: 20,) : Icon(Icons.visibility_off,size: 20,),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                       borderSide: BorderSide(width: 2,color: Colors.black45),
@@ -212,4 +219,5 @@ class _LoginPageState extends State<LoginPage> {
       )
     );
   }
+
 }
