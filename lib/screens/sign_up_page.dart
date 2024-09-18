@@ -20,14 +20,15 @@ class _SignUpPageState extends State<SignUpPage> {
   TextEditingController mailController = TextEditingController();
 
   TextEditingController passController = TextEditingController();
-
+    bool isLight = false;
   @override
   Widget build(BuildContext context) {
+    isLight = Theme.of(context).brightness==Brightness.light ;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Container(
         decoration: BoxDecoration(
-            gradient: LinearGradient(colors: [Colors.white,Colors.purple.shade100,Colors.purple.shade100],
+            gradient: LinearGradient(colors: isLight? [Colors.white,Colors.purple.shade100,Colors.purple.shade100] : [Colors.black26,Colors.black26],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter
             )
@@ -44,11 +45,11 @@ class _SignUpPageState extends State<SignUpPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset('assets/icons/brand_logo.png',),
-                  Text('Monety',style: TextStyle(fontSize: 22,color: Colors.black,fontWeight: FontWeight.bold),),
+                  Text('Monety',style: TextStyle(fontSize: 22,color: isLight?Colors.black: Colors.white,fontWeight: FontWeight.bold),),
 
                 ],
               ),
-              Center(child: Text("Now let's make you a Monety member",style: TextStyle(fontSize: 18,color: Colors.black54,fontWeight: FontWeight.bold),)),
+              Center(child: Text("Now let's make you a Monety member",style: TextStyle(fontSize: 18,color: isLight?Colors.black: Colors.white,fontWeight: FontWeight.bold),)),
 
 
 
@@ -66,9 +67,9 @@ class _SignUpPageState extends State<SignUpPage> {
                       controller: firstController,
                       decoration: InputDecoration(
                         label: Text('First Name'),
-                        labelStyle: TextStyle(fontSize: 15,color: Colors.black38,fontWeight: FontWeight.w600),
+                        labelStyle: TextStyle(fontSize: 15,color: isLight?Colors.black54: Colors.white,fontWeight: FontWeight.w600),
                         enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(width: 2,color: Colors.black54),
+                          borderSide: BorderSide(width: 2,color: isLight?Colors.black54: Colors.white),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         focusedBorder: OutlineInputBorder(
@@ -89,9 +90,9 @@ class _SignUpPageState extends State<SignUpPage> {
                       decoration: InputDecoration(
 
                         label: Text('Last Name') ,
-                        labelStyle: TextStyle(fontSize: 15,color: Colors.black38,fontWeight: FontWeight.w600),
+                        labelStyle: TextStyle(fontSize: 15,color: isLight?Colors.black54: Colors.white,fontWeight: FontWeight.w600),
                         enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(width: 2,color: Colors.black54 ),
+                          borderSide: BorderSide(width: 2,color: isLight?Colors.black54: Colors.white ),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         focusedBorder: OutlineInputBorder(
@@ -112,13 +113,13 @@ class _SignUpPageState extends State<SignUpPage> {
                 child: TextField(
                   controller: mailController,
                   decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.mail,size: 25,color: Colors.black45,),
+                    prefixIcon: Icon(Icons.mail,size: 25,color: isLight?Colors.black54: Colors.white,),
                     label: Text('Enter your mail'),
-                    labelStyle: TextStyle(fontSize: 15,color: Colors.black38,fontWeight: FontWeight.w600),
+                    labelStyle: TextStyle(fontSize: 15,color: isLight?Colors.black54: Colors.white,fontWeight: FontWeight.w600),
                     suffixText: '@gmail.com',
-                    suffixStyle: TextStyle(fontSize: 15,color: Colors.black38,fontWeight: FontWeight.w600),
+                    suffixStyle: TextStyle(fontSize: 15,color: isLight?Colors.black38 : Colors.white,fontWeight: FontWeight.w600),
                     enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(width: 2,color: Colors.black54),
+                      borderSide: BorderSide(width: 2,color: isLight?Colors.black54: Colors.white),
                       borderRadius: BorderRadius.circular(10),
                     ),
                     focusedBorder: OutlineInputBorder(
@@ -144,12 +145,12 @@ class _SignUpPageState extends State<SignUpPage> {
                   obscureText: true,
                   obscuringCharacter: '*',
                   decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.password,size: 25,color: Colors.black38,),
+                    prefixIcon: Icon(Icons.password,size: 25,color: isLight?Colors.black38: Colors.white,),
                     label: Text('Password'),
-                    labelStyle: TextStyle(fontSize: 15,color: Colors.black38,fontWeight: FontWeight.w600),
-                    suffixIcon: obscureText == true ? Icon(Icons.visibility,size: 20,color: Colors.black45,) : Icon(Icons.visibility_off,size: 20,color: Colors.black45,),
+                    labelStyle: TextStyle(fontSize: 15,color: isLight?Colors.black38: Colors.white,fontWeight: FontWeight.w600),
+                    suffixIcon: obscureText == true ? Icon(Icons.visibility,size: 20,color: isLight?Colors.black45 : Colors.white,) : Icon(Icons.visibility_off,size: 20,color: Colors.black45,),
                     enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(width: 2,color: Colors.black54),
+                      borderSide: BorderSide(width: 2,color: isLight? Colors.black54: Colors.white),
                       borderRadius: BorderRadius.circular(10),
                     ),
                     focusedBorder: OutlineInputBorder(
@@ -165,14 +166,14 @@ class _SignUpPageState extends State<SignUpPage> {
               ),
               RichText(text: TextSpan(
                   children: [
-                    TextSpan(text: 'X  ',style: TextStyle(fontSize: 15,color: Colors.black45,fontWeight: FontWeight.w600)),
-                    TextSpan(text: 'Minimum of 8 Characters',style: TextStyle(fontSize: 15,color: Colors.black45,fontWeight: FontWeight.w600)),
+                    TextSpan(text: 'X  ',style: TextStyle(fontSize: 15,color: isLight?Colors.black45:Colors.white,fontWeight: FontWeight.w600)),
+                    TextSpan(text: 'Minimum of 8 Characters',style: TextStyle(fontSize: 15,color: isLight?Colors.black45:Colors.white,fontWeight: FontWeight.w600)),
                   ]
               )),
               RichText(text: TextSpan(
                 children: [
-                  TextSpan(text: 'X  ',style: TextStyle(fontSize: 15,color: Colors.black45,fontWeight: FontWeight.w600)),
-                  TextSpan(text: 'Uppercase, Lowercase letters, and one number',style: TextStyle(fontSize: 15,color: Colors.black45,fontWeight: FontWeight.w600)),
+                  TextSpan(text: 'X  ',style: TextStyle(fontSize: 15,color: isLight?Colors.black45:Colors.white,fontWeight: FontWeight.w600)),
+                  TextSpan(text: 'Uppercase, Lowercase letters, and one number',style: TextStyle(fontSize: 15,color: isLight?Colors.black45:Colors.white,fontWeight: FontWeight.w600)),
                 ]
               )),
               SizedBox(
@@ -181,7 +182,7 @@ class _SignUpPageState extends State<SignUpPage> {
                Container(
 
                 height: 2,
-                color: Colors.black38,
+                color: isLight?Colors.black38 : Colors.white,
               ),
 
                 SizedBox(
@@ -212,11 +213,11 @@ class _SignUpPageState extends State<SignUpPage> {
                   }
 
 
-                  }, child: Text('Sign Up',style: TextStyle(fontSize: 20,color: Colors.black,fontWeight: FontWeight.bold),),style: ElevatedButton.styleFrom(backgroundColor: Color(0xffE78BBC)),)),
+                  }, child: Text('Sign Up',style: TextStyle(fontSize: 20,color: isLight?Colors.black : Colors.white,fontWeight: FontWeight.bold),),style: ElevatedButton.styleFrom(backgroundColor: Color(0xffE78BBC)),)),
 
               Center(child: TextButton(onPressed: (){
                 Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginPage()));
-              }, child: Text('Already have an account',style: TextStyle(fontSize: 18,color: Colors.black87,fontWeight: FontWeight.bold),)))
+              }, child: Text('Already have an account',style: TextStyle(fontSize: 18,color: isLight?Colors.black87 :Colors.white,fontWeight: FontWeight.bold),)))
 
 
 

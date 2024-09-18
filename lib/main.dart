@@ -26,6 +26,7 @@ class _ExpenseAppState extends State<ExpenseApp> {
   @override
   void initState() {
     super.initState();
+    context.read<ChangeThemeProvider>().getInitialTheme();
 
   }
   Widget build(BuildContext context) {

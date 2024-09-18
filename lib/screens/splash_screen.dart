@@ -17,6 +17,7 @@ class SplashScreen extends StatefulWidget{
 class SplashScreenState extends State<SplashScreen>{
    SharedPreferences? prefs;
    int? uId;
+   bool isLight = false;
   @override
   void initState() {
     movePage();
@@ -37,18 +38,19 @@ class SplashScreenState extends State<SplashScreen>{
 
   @override
   Widget build(BuildContext context) {
+    isLight = Theme.of(context).brightness==Brightness.light ;
     return Scaffold(
       body: Container(
         width: double.infinity,
         height: double.infinity,
         decoration: BoxDecoration(
-          gradient: LinearGradient(colors: [Colors.purple.shade50,Colors.purple.shade50,])
+          gradient: LinearGradient(colors: isLight ? [Colors.purple.shade50,Colors.purple.shade50,] : [Colors.black45,Colors.black45])
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset('assets/icons/brand_logo.png',),
-            Text('Monety',style: TextStyle(fontSize: 25,color: Colors.black,fontWeight: FontWeight.bold),)
+            Text('Monety',style: TextStyle(fontSize: 25,color: isLight? Colors.black : Colors.white,fontWeight: FontWeight.bold),)
           ],
         ),
       )

@@ -35,7 +35,7 @@ class CustomTextField extends StatelessWidget{
           hintText: hintText,
           prefixIcon: prefixIcon != null ? Icon(prefixIcon) : null,
           suffixIcon: suffixIcon != null ? Icon(suffixIcon) : null,
-          enabledBorder: myBorder(borderRadius: 15,borderWidth: 1,borderColor: Colors.black54),
+          enabledBorder: myBorder(borderRadius: 15,borderWidth: 1,borderColor: Theme.of(context).brightness==Brightness.light ? Colors.black : Colors.white),
           focusedBorder: myBorder(borderColor: Color(0xff6574D3),borderRadius: 15)
         ),
       ),

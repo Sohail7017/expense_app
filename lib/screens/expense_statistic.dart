@@ -9,8 +9,10 @@ class ExpenseStatistic extends StatefulWidget{
 
 class _ExpenseStatisticState extends State<ExpenseStatistic> {
   int selectedIndex = 0;
+  bool isLight = false;
   @override
   Widget build(BuildContext context) {
+    isLight = Theme.of(context).brightness==Brightness.light ;
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -27,7 +29,7 @@ class _ExpenseStatisticState extends State<ExpenseStatistic> {
                   crossAxisAlignment: CrossAxisAlignment.baseline,
                   textBaseline: TextBaseline.alphabetic,
                   children: [
-                    Text('Statistic',style: TextStyle(fontSize: 22,color: Color(0xff12183D),fontWeight: FontWeight.bold),),
+                    Text('Statistic',style: TextStyle(fontSize: 22,color: isLight?Color(0xff12183D) : Colors.white,fontWeight: FontWeight.bold),),
                     IconButton(onPressed: (){}, icon: Container(
                       width: 140,
                       height: 40,
@@ -121,8 +123,8 @@ class _ExpenseStatisticState extends State<ExpenseStatistic> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Expense Breakdown',style: TextStyle(fontSize: 18,color: Color(0xff12183D),fontWeight: FontWeight.bold),),
-                        Text('Limit\$900 / week',style: TextStyle(fontSize: 13,color: Color(0xff5A5E7B),fontWeight: FontWeight.bold,fontFamily: 'MyFonts'),)
+                        Text('Expense Breakdown',style: TextStyle(fontSize: 18,color: isLight?Color(0xff12183D) : Colors.white,fontWeight: FontWeight.bold),),
+                        Text('Limit\$900 / week',style: TextStyle(fontSize: 13,color: isLight?Color(0xff5A5E7B) : Colors.white,fontWeight: FontWeight.bold,fontFamily: 'MyFonts'),)
                       ],
                     ),
                           SizedBox(
@@ -189,19 +191,19 @@ class _ExpenseStatisticState extends State<ExpenseStatistic> {
                                     SizedBox(
                                       height: 28,
                                     ),
-                                    Text('\$600',style: TextStyle(fontSize: 13,color: Color(0xffA0A2B2),fontWeight: FontWeight.bold,fontFamily: 'MyFonts'),),
+                                    Text('\$600',style: TextStyle(fontSize: 13,color:  isLight?Color(0xff5A5E7B) : Colors.white,fontWeight: FontWeight.bold,fontFamily: 'MyFonts'),),
                                     SizedBox(
                                       height: 10,
                                     ),
-                                    Text('\$300',style: TextStyle(fontSize: 13,color: Color(0xffA0A2B2),fontWeight: FontWeight.bold,fontFamily: 'MyFonts'),),
+                                    Text('\$300',style: TextStyle(fontSize: 13,color:  isLight?Color(0xff5A5E7B) : Colors.white,fontWeight: FontWeight.bold,fontFamily: 'MyFonts'),),
                                     SizedBox(
                                       height: 10,
                                     ),
-                                    Text('\$300',style: TextStyle(fontSize: 13,color: Color(0xffA0A2B2),fontWeight: FontWeight.bold,fontFamily: 'MyFonts'),),
+                                    Text('\$300',style: TextStyle(fontSize: 13,color:  isLight?Color(0xff5A5E7B) : Colors.white,fontWeight: FontWeight.bold,fontFamily: 'MyFonts'),),
                                     SizedBox(
                                       height: 10,
                                     ),
-                                    Text('\$0',style: TextStyle(fontSize: 13,color: Color(0xffA0A2B2),fontWeight: FontWeight.bold,fontFamily: 'MyFonts'),),
+                                    Text('\$0',style: TextStyle(fontSize: 13,color:  isLight?Color(0xff5A5E7B) : Colors.white,fontWeight: FontWeight.bold,fontFamily: 'MyFonts'),),
                                   ],
                                 ),
                               ),
@@ -299,24 +301,24 @@ class _ExpenseStatisticState extends State<ExpenseStatistic> {
                           padding: const EdgeInsets.only(left: 65,top: 170),
                           child: Row(
                             children: [
-                              Text('W1',style: TextStyle(fontSize: 13,color: Color(0xffA0A2B2),fontWeight: FontWeight.bold,fontFamily: 'MyFonts'),),
+                              Text('W1',style: TextStyle(fontSize: 13,color:  isLight?Color(0xff5A5E7B) : Colors.white,fontWeight: FontWeight.bold,fontFamily: 'MyFonts'),),
                               SizedBox(
                                 width: 46,
                               ),
-                              Text('W2',style: TextStyle(fontSize: 13,color: Color(0xffA0A2B2),fontWeight: FontWeight.bold,fontFamily: 'MyFonts'),),
+                              Text('W2',style: TextStyle(fontSize: 13,color:  isLight?Color(0xff5A5E7B) : Colors.white,fontWeight: FontWeight.bold,fontFamily: 'MyFonts'),),
                               SizedBox(
                                 width: 46,
                               ),
-                              Text('W3',style: TextStyle(fontSize: 13,color: Color(0xffA0A2B2),fontWeight: FontWeight.bold,fontFamily: 'MyFonts'),),
+                              Text('W3',style: TextStyle(fontSize: 13,color:  isLight?Color(0xff5A5E7B) : Colors.white,fontWeight: FontWeight.bold,fontFamily: 'MyFonts'),),
 
                               SizedBox(
                                 width: 46,
                               ),
-                              Text('W4',style: TextStyle(fontSize: 13,color: Color(0xffA0A2B2),fontWeight: FontWeight.bold,fontFamily: 'MyFonts'),),
+                              Text('W4',style: TextStyle(fontSize: 13,color:  isLight?Color(0xff5A5E7B) : Colors.white,fontWeight: FontWeight.bold,fontFamily: 'MyFonts'),),
                               SizedBox(
                                 width: 50,
                               ),
-                              Text('W5',style: TextStyle(fontSize: 13,color: Color(0xffA0A2B2),fontWeight: FontWeight.bold,fontFamily: 'MyFonts'),),
+                              Text('W5',style: TextStyle(fontSize: 13,color:  isLight?Color(0xff5A5E7B) : Colors.white,fontWeight: FontWeight.bold,fontFamily: 'MyFonts'),),
                             ],
                           ),
                         )
@@ -328,8 +330,8 @@ class _ExpenseStatisticState extends State<ExpenseStatistic> {
                 SizedBox(
                   height: 15,
                 ),
-                Text('Spending Details',style: TextStyle(fontSize: 18,color: Color(0xff12183D),fontWeight: FontWeight.bold),),
-                Text('Your expenses are divided into 6 categories',style: TextStyle(fontSize: 13,color: Color(0xff5A5E7B),fontWeight: FontWeight.bold,fontFamily: 'MyFonts'),),
+                Text('Spending Details',style: TextStyle(fontSize: 18,color: isLight?Color(0xff12183D): Colors.white,fontWeight: FontWeight.bold),),
+                Text('Your expenses are divided into 6 categories',style: TextStyle(fontSize: 13,color: isLight?Color(0xff5A5E7B) : Colors.white,fontWeight: FontWeight.bold,fontFamily: 'MyFonts'),),
                 SizedBox(
                   height: 15,
                 ),
@@ -413,27 +415,27 @@ class _ExpenseStatisticState extends State<ExpenseStatistic> {
                       padding: const EdgeInsets.only(top: 12),
                       child: Row(
                         children: [
-                          Text('40%',style: TextStyle(fontSize: 15,color: Color(0xffA0A2B2),fontWeight: FontWeight.bold,fontFamily: 'MyFonts'),),
+                          Text('40%',style: TextStyle(fontSize: 15,color: isLight?Color(0xffA0A2B2) : Colors.white,fontWeight: FontWeight.bold,fontFamily: 'MyFonts'),),
                           SizedBox(
                             width: 58,
                           ),
-                          Text('25%',style: TextStyle(fontSize: 15,color: Color(0xffA0A2B2),fontWeight: FontWeight.bold,fontFamily: 'MyFonts'),),
+                          Text('25%',style: TextStyle(fontSize: 15,color: isLight?Color(0xffA0A2B2) : Colors.white,fontWeight: FontWeight.bold,fontFamily: 'MyFonts'),),
                           SizedBox(
                             width: 48,
                           ),
-                          Text('15%',style: TextStyle(fontSize: 15,color: Color(0xffA0A2B2),fontWeight: FontWeight.bold,fontFamily: 'MyFonts'),),
+                          Text('15%',style: TextStyle(fontSize: 15,color: isLight?Color(0xffA0A2B2) : Colors.white,fontWeight: FontWeight.bold,fontFamily: 'MyFonts'),),
                           SizedBox(
                             width: 37,
                           ),
-                          Text('10%',style: TextStyle(fontSize: 15,color: Color(0xffA0A2B2),fontWeight: FontWeight.bold,fontFamily: 'MyFonts'),),
+                          Text('10%',style: TextStyle(fontSize: 15,color: isLight?Color(0xffA0A2B2) : Colors.white,fontWeight: FontWeight.bold,fontFamily: 'MyFonts'),),
                           SizedBox(
                             width: 30,
                           ),
-                          Text('5%',style: TextStyle(fontSize: 15,color: Color(0xffA0A2B2),fontWeight: FontWeight.bold,fontFamily: 'MyFonts'),),
+                          Text('5%',style: TextStyle(fontSize: 15,color: isLight?Color(0xffA0A2B2) : Colors.white,fontWeight: FontWeight.bold,fontFamily: 'MyFonts'),),
                           SizedBox(
                             width: 18,
                           ),
-                          Text('5%',style: TextStyle(fontSize: 15,color: Color(0xffA0A2B2),fontWeight: FontWeight.bold,fontFamily: 'MyFonts'),),
+                          Text('5%',style: TextStyle(fontSize: 15,color: isLight?Color(0xffA0A2B2) : Colors.white,fontWeight: FontWeight.bold,fontFamily: 'MyFonts'),),
                         ],
                       ),
                     ),
@@ -467,7 +469,7 @@ class _ExpenseStatisticState extends State<ExpenseStatistic> {
                               ),
                               child: Icon(Icons.shopping_cart,size: 30,color: Color(0xff7683C8),))),
 
-                          title:  Text('Shop',style: TextStyle(fontSize: 13,color: Color(0xff12183D),fontWeight: FontWeight.bold),),
+                          title:  Text('Shop',style: TextStyle(fontSize: 13,color: isLight?Color(0xff12183D):Colors.white,fontWeight: FontWeight.bold),),
 
                           subtitle:Text('-\$1190',style: TextStyle(fontSize: 13,color: Color(0xffE78BBC),fontWeight: FontWeight.bold,fontFamily: 'MyFonts'),),
 
@@ -497,7 +499,7 @@ class _ExpenseStatisticState extends State<ExpenseStatistic> {
                               ),
                               child: Icon(Icons.emoji_transportation_sharp,size: 30,color: Color(0xffDB7075),))),
 
-                          title:Text('Transport',style: TextStyle(fontSize: 13,color: Color(0xff12183D),fontWeight: FontWeight.bold),),
+                          title:Text('Transport',style: TextStyle(fontSize: 13,color: isLight?Color(0xff12183D):Colors.white,fontWeight: FontWeight.bold),),
 
                           subtitle:Text('-\$867',style: TextStyle(fontSize: 13,color: Color(0xffE78BBC),fontWeight: FontWeight.bold,fontFamily: 'MyFonts'),),
 
@@ -534,7 +536,7 @@ class _ExpenseStatisticState extends State<ExpenseStatistic> {
                               ),
                               child: Icon(Icons.shopping_cart,size: 30,color: Color(0xff7683C8),))),
 
-                          title:  Text('Shop',style: TextStyle(fontSize: 13,color: Color(0xff12183D),fontWeight: FontWeight.bold),),
+                          title:  Text('Shop',style: TextStyle(fontSize: 13,color: isLight?Color(0xff12183D):Colors.white,fontWeight: FontWeight.bold),),
 
                           subtitle:Text('-\$1190',style: TextStyle(fontSize: 13,color: Color(0xffE78BBC),fontWeight: FontWeight.bold,fontFamily: 'MyFonts'),),
 
@@ -563,7 +565,7 @@ class _ExpenseStatisticState extends State<ExpenseStatistic> {
                               ),
                               child: Icon(Icons.emoji_transportation_sharp,size: 30,color: Color(0xffDB7075),))),
 
-                          title: Text('Transport',style: TextStyle(fontSize: 13,color: Color(0xff12183D),fontWeight: FontWeight.bold),),
+                          title: Text('Transport',style: TextStyle(fontSize: 13,color: isLight?Color(0xff12183D):Colors.white,fontWeight: FontWeight.bold),),
 
                           subtitle: Text('-\$867',style: TextStyle(fontSize: 13,color: Color(0xffE78BBC),fontWeight: FontWeight.bold,fontFamily: 'MyFonts'),),
 
